@@ -53,7 +53,7 @@ stages:
   - deployment: Deploy
     displayName: Deploy
 
-   # environment: 'stacksimplifyazuredevopsgithubacraksapp1internal-1561.default'
+    environment: 'stacksimplifyazuredevopsgithubacraksapp1internal-1561.default'
     strategy:
       runOnce:
         deploy:
