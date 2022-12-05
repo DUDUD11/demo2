@@ -5,6 +5,9 @@
 trigger:
 - master
 
+pool:
+   name: hskim
+
 resources:
 - repo: self
 
@@ -12,14 +15,13 @@ variables:
 
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '8e06f498-fd9e-481c-8453-12d8c2da0245'
-  imageRepository: 'app1nginxaks'
-  containerRegistry: 'aksdevopsacr.azurecr.io'
+  imageRepository: 'app1/app1nginx'
+  containerRegistry: 'acrdemokhs.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'aksdevopsacr1755e8d5-auth'
 
   # Agent VM image name
-  vmImageName: 'ubuntu-latest'
   
 
 stages:
@@ -28,8 +30,7 @@ stages:
   jobs:  
   - job: Build
     displayName: Build
-    pool:
-      vmImage: $(vmImageName)
+
     steps:
     - task: Docker@2
       displayName: Build and push an image to container registry
@@ -51,8 +52,7 @@ stages:
   jobs:
   - deployment: Deploy
     displayName: Deploy
-    pool:
-      vmImage: $(vmImageName)
+
     environment: 'stacksimplifyazuredevopsgithubacraksapp1internal-1561.default'
     strategy:
       runOnce:
