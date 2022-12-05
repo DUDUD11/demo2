@@ -3,7 +3,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-- master
+- main
 
 pool:
    name: hskim
@@ -66,8 +66,8 @@ stages:
               action: deploy
               kubernetesServiceConnection: aksdemo1 - kubernetes
               manifests: |
-                $(Build.SourcesDirectory)/kube-manifests/deployment.yml
-                $(Build.SourcesDirectory)/kube-manifests/service.yml
+                $(Build.SourcesDirectory)/kube-manifests/Deployment.yml
+                $(Build.SourcesDirectory)/kube-manifests/01-Deployment-and-LoadBalancer-Service.yml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
