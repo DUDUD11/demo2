@@ -20,6 +20,7 @@ variables:
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'aksdevopsacr1755e8d5-auth'
+  environment: 'Session-2'
 
   # Agent VM image name
   
@@ -53,7 +54,7 @@ stages:
   - deployment: Deploy
     displayName: Deploy
 
-    environment: 'stacksimplifyazuredevopsgithubacraksapp1internal-1561.default'
+    environment: $(environment)
     strategy:
       runOnce:
         deploy:
