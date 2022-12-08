@@ -66,8 +66,9 @@ stages:
               action: deploy
               kubernetesServiceConnection: aksdemo1 - kubernetes
               manifests: |
-                $(Build.SourcesDirectory)/kube-manifests/01-Deployment-and-LoadBalancer-Service.yml
-              imagePullSecrets: |
-                $(imagePullSecret)
+                $(Pipeline.Workspace)/kube-manifests/01-Deployment-and-LoadBalancer-Service.yml
               containers: |
                 $(containerRegistry)/$(imageRepository):$(tag)
+              imagePullSecrets: |
+                $(imagePullSecret)
+
