@@ -70,5 +70,5 @@ stages:
                 $(Build.SourcesDirectory)/kube-manifests/01-Deployment-and-LoadBalancer-Service.yml
               imagePullSecrets: |
                 $(imagePullSecret)
-           #   containers: |
-           #     $(imageRepository):$(tag)
+              containers: |
+                $(containerRegistry)/$(imageRepository):$(tag)
