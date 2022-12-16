@@ -6,7 +6,7 @@ trigger:
 - main
 
 pool:
-   name: hskim
+   name: Azure Pipelines
 
 resources:
 - repo: self
